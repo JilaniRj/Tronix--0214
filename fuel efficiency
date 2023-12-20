@@ -1,0 +1,31 @@
+class SimulationParameters:
+    def __init__(self, distance, consumedfuel):
+        self.distance = distance
+        self.consumedfuel = consumedfuel
+
+    def display_parameters(self):
+        print(f"distance: {self.distance} m")
+        print(f"consumedfuel : {self.consumedfuel} l")
+
+
+def run_simulation(parameters):
+    # Your simulation logic goes here using the parameters
+    fuelefficiency = parameters.distance / parameters.consumedfuel
+    print(f"fuel efficiency: {fuelefficiency} m/l")
+
+
+# Example usage:
+if __name__ == "__main__":
+    # Set simulation parameters
+    distance = int(input("enter distance = ")) # m
+    time = int(input("enter consumedfuel = ")) # l
+    
+
+    # Create simulation parameters object
+    simulation_params = SimulationParameters( distance, time)
+
+    # Display simulation parameters
+    simulation_params.display_parameters()
+
+    # Run the simulation
+    run_simulation(simulation_params)
