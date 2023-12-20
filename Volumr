@@ -1,0 +1,31 @@
+class SimulationParameters:
+    def __init__(self, volume, time):
+        self.volume = volume
+        self.time = time
+
+    def display_parameters(self):
+        print(f"volume: {self.volume} m^3")
+        print(f"Time : {self.time} seconds")
+
+
+def run_simulation(parameters):
+    # Your simulation logic goes here using the parameters
+    maximum_production_rate = parameters.volume / parameters.time 
+    print(f"production_rate: { maximum_production_rate} m^3/s")
+
+
+# Example usage:
+if __name__ == "__main__":
+    # Set simulation parameters
+    volume = int(input("enter volume of mined = ")) # m
+    time = int(input("enter time = ")) # s
+    
+
+    # Create simulation parameters object
+    simulation_params = SimulationParameters( volume, time)
+
+    # Display simulation parameters
+    simulation_params.display_parameters()
+
+    # Run the simulation
+    run_simulation(simulation_params)
