@@ -1,0 +1,31 @@
+class SimulationParameters:
+    def __init__(self, distance, time):
+        self.distance = distance
+        self.time = time
+
+    def display_parameters(self):
+        print(f"distance: {self.distance} m")
+        print(f"Time : {self.time} seconds")
+
+
+def run_simulation(parameters):
+    # Your simulation logic goes here using the parameters
+    speed = parameters.distance / parameters.time 
+    print(f"speed: {speed} m/s")
+
+
+# Example usage:
+if __name__ == "__main__":
+    # Set simulation parameters
+    distance = int(input("enter distance = ")) # m
+    time = int(input("enter time = ")) # s
+    
+
+    # Create simulation parameters object
+    simulation_params = SimulationParameters( distance, time)
+
+    # Display simulation parameters
+    simulation_params.display_parameters()
+
+    # Run the simulation
+    run_simulation(simulation_params)
