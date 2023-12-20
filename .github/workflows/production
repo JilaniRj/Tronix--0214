@@ -1,0 +1,32 @@
+import random
+
+# Function to calculate efficiency (replace with your actual function)
+def calculate_efficiency(speed):
+    # Replace this with your actual efficiency calculation logic
+    # For simplicity, we'll use a random function as a placeholder
+    # Assume higher speed is more efficient for this example
+    return -(speed - 100) ** 2 + 5000
+
+def hill_climbing_optimization(iterations=1000, step_size=1):
+    # Initial guess for speed
+    current_speed = random.uniform(50, 150)
+
+    for _ in range(iterations):
+        # Evaluate the current efficiency
+        current_efficiency = calculate_efficiency(current_speed)
+
+        # Try a new speed
+        new_speed = current_speed + random.uniform(-step_size, step_size)
+
+        # Evaluate the new efficiency
+        new_efficiency = calculate_efficiency(new_speed)
+
+        # Update the speed if the new efficiency is better
+        if new_efficiency > current_efficiency:
+            current_speed = new_speed
+
+    return current_speed
+
+# Example usage
+optimal_speed = hill_climbing_optimization()
+print(f"Optimal Speed: {optimal_speed} km/h")
