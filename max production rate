@@ -1,0 +1,49 @@
+import random
+
+class ProductionSimulation:
+    def __init__(self, extraction_rate, equipment_strategy, resource_distribution):
+        self.extraction_rate = extraction_rate
+        self.equipment_strategy = equipment_strategy
+        self.resource_distribution = resource_distribution
+
+    def run_simulation(self):
+        # Replace this with your actual simulation logic
+        # For simplicity, we'll use a random function as a placeholder
+        production_rate = (
+            self.extraction_rate * self.equipment_strategy * self.resource_distribution
+        )
+        return production_rate
+
+def maximize_production_rate_simulation():
+    # Define ranges for parameters
+    extraction_rates = [50, 100, 150]
+    equipment_strategies = [0.8, 1.0, 1.2]
+    resource_distributions = [0.5, 0.7, 0.9]
+
+    best_production_rate = 0
+    best_parameters = {}
+
+    for extraction_rate in extraction_rates:
+        for equipment_strategy in equipment_strategies:
+            for resource_distribution in resource_distributions:
+                simulation = ProductionSimulation(
+                    extraction_rate, equipment_strategy, resource_distribution
+                )
+                current_production_rate = simulation.run_simulation()
+
+                if current_production_rate > best_production_rate:
+                    best_production_rate = current_production_rate
+                    best_parameters = {
+                        "Extraction Rate": extraction_rate,
+                        "Equipment Strategy": equipment_strategy,
+                        "Resource Distribution": resource_distribution,
+                    }
+
+    return best_production_rate, best_parameters
+
+# Example usage
+max_production_rate, optimal_parameters = maximize_production_rate_simulation()
+print(f"Max Production Rate: {max_production_rate}")
+print("Optimal Parameters:")
+for key, value in optimal_parameters.items():
+    print(f"{key}: {value}")
