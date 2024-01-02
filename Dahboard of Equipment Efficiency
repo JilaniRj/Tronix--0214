@@ -1,0 +1,9 @@
+import pandas as pd
+from matplotlib import pyplot as plt
+plt.style.use('classic')
+df = pd.read_csv('M13.csv')
+x = df['Equipment']
+y = df['Hours_Worked']
+plt.xlabel('Equipment ',fontsize=18)
+plt.ylabel('Hours_Worked',fontsize=16)
+plt.bar(x,y)
