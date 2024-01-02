@@ -1,0 +1,26 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+# Load your CSV data
+data = pd.read_csv('M10.csv')
+# Assuming your CSV has a 'label' column indicating the risk level
+# Here, 'Mine' and 'Equipment' columns will be used as features
+features = data[['EquipmentCategory', 'BreakdownHours']]
+target = data['Mine']
+# Convert categorical features to numerical using one-hot encoding
+features_encoded = pd.get_dummies(features)
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(features_encoded, target, test_size=0.2, random_state=42)
+# Initialize a RandomForestClassifier
+classifier = RandomForestClassifier()
+# Train the model
+classifier.fit(X_train, y_train)
+# Make predictions on the test set
+y_pred = classifier.predict(X_test)
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+print(f'Accuracy: {accuracy}')
+print(f'Classification Report:\n{report}')
+
