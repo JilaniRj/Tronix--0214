@@ -1,0 +1,21 @@
+# simulation_script.py
+import numpy as np
+def simulate_extraction(extraction_rate, equipment_strategy, resource_distribution):
+    # Implement your simulation logic here
+    # Use extraction_rate, deployment_strategy, and resource_distribution parameters
+    # Example: Simulate extraction and calculate productivity
+    simulated_productivity = np.random.uniform(0.3,0.5 ) * extraction_rate
+    return simulated_productivity
+def main():
+    # Define different scenarios
+    extraction_rates = [0.947, 0.906, 0.842]
+    Equipment_strategies = ['shovel1', 'truck1', 'shovel1']
+    resource_distributions = {'Miningarea_1': [0.3, 0.5, 0.2], 'Miningarea_2': [0.2, 0.2, 0.6]}
+    # Iterate through scenarios
+    for rate in extraction_rates:
+        for strategy in Equipment_strategies:
+            for area, distribution in resource_distributions.items():
+                productivity = simulate_extraction(rate, strategy, distribution)
+                print(f"Scenario: Extraction Rate {rate}, EquipmentStrategy {strategy}, MiningArea {area} - Productivity: {productivity}")
+if __name__ == "__main__":
+    main()
