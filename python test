@@ -1,0 +1,22 @@
+import pandas as pd
+import pytest
+# Function to load the CSV data
+def load_csv(file_path):
+    return pd.read_csv(file_path)
+# Test to check if the CSV data is loaded successfully
+def test_load_csv():
+    file_path = r'E:\Material\M12.csv'
+    df = load_csv(file_path)
+    assert not df.empty
+# Test to check if the 'Shift' column contains valid values
+def test_shift_column():
+    file_path = r'E:\Material\M12.csv'
+    df = load_csv(file_path)
+    valid_shifts = ['Day', 'Night']
+    assert all(df['Shift'].isin(valid_shifts))
+# Test to check if 'Actual_TPH' is greater than or equal to 0 for all rows
+def test_actual_tph_non_negative():
+    file_path = r'E:\Material\M12.csv'
+    df = load_csv(file_path)
+    assert all(df['Actual_TPH'] >= 0)
+# Add more tests as needed based on your specific requirements
