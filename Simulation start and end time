@@ -1,0 +1,6 @@
+from datetime import datetime, timedelta
+start_time = datetime(2023, 10, 2, 8, 0, 0)  # Year, Month, Day, Hour, Minute, Second
+simulation_duration = timedelta(days=1)
+end_time = start_time + simulation_duration
+print(f"Simulation starts at: {start_time}")
+print(f"Simulation ends at: {end_time}")
