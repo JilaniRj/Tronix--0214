@@ -1,0 +1,26 @@
+import pandas as pd
+# Load CSV file into a DataFrame
+file_path = 'equipment.csv'  # Replace with your actual file path
+df = pd.read_csv(file_path)
+# Extract unique equipment names
+equipment_names = df['Equipment'].unique()
+# Initialize a dictionary to store equipment specs
+equipment_specs = {}
+# Iterate through each equipment type
+for equipment_name in equipment_names:
+    # Filter rows for the current equipment
+    equipment_df = df[df['Equipment'] == equipment_name]
+    # Extract and store unique capacity and power values
+    capacity_values = equipment_df['Capacity'].unique()
+    power_values = equipment_df['Power'].unique()
+    # Store equipment specs in the dictionary
+    equipment_specs[equipment_name] = {
+        'Capacity': capacity_values.tolist(),
+        'Power': power_values.tolist()
+    }
+# Print the equipment specifications
+for equipment, specs in equipment_specs.items():
+    print(f"{equipment} Specs:")
+    print(f"Capacity: {specs['Capacity']}")
+    print(f"Power: {specs['Power']}\n")
+
