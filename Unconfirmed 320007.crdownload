@@ -1,0 +1,137 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+import numpy as np #for mathematical functions
+import pandas as pd #used for data manipulation and analysis
+import seaborn as sns  #for attractive and informative graphs
+import matplotlib.pyplot as plt #Plots and charts
+# Sample data with sensor coordinates
+data = {
+    'Latitude': np.random.uniform(30, 35, 100),
+    'Longitude': np.random.uniform(-110, -100, 100),
+}
+df = pd.DataFrame(data)
+# Create a heatmap using Seaborn
+plt.figure(figsize=(10, 8))
+sns.kdeplot(data=df, x='Longitude', y='Latitude', fill=True, cmap='viridis', thresh=0.1)
+plt.title('Sensor Distribution Heatmap in Mine Zones')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()
+
+
+# In[15]:
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load your CSV data into a DataFrame
+data = pd.read_csv('M.csv')  # Replace 'your_data.csv' with your actual file name
+# Assuming you have a 'Mine' column indicating different mine zones
+# Adjust the column names as per your actual data
+mine_zones = data['Mine']
+# Convert 'WorkHours' to numeric (assuming it contains non-numeric characters)
+data['WorkHours'] = pd.to_numeric(data['WorkHours'].str.extract('(\d+)')[0])
+# Select relevant columns for the heatmaps
+heatmap_data = data[['Mine', 'WorkHours', 'FuelConsumed']]
+# Create a bar plot for WorkHours
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='WorkHours', data=heatmap_data)
+plt.title('Work Hours Distribution in Mine Zones')
+plt.ylabel('Work Hours')
+plt.show()
+# Create a bar plot for FuelConsumed
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='FuelConsumed', data=heatmap_data)
+plt.title('Fuel Consumption Distribution in Mine Zones')
+plt.ylabel('Fuel Consumed (gal)')
+plt.show()
+
+
+# In[16]:
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load your CSV data into a DataFrame
+data = pd.read_csv('your_data.csv')  # Replace 'your_data.csv' with your actual file name
+# Assuming you have a 'Mine' column indicating different mine zones
+# Adjust the column names as per your actual data
+mine_zones = data['Mine']
+# Convert 'WorkHours' to numeric (assuming it contains non-numeric characters)
+data['WorkHours'] = pd.to_numeric(data['WorkHours'].str.extract('(\d+)')[0])
+# Convert 'FuelConsumed' to numeric (assuming it contains non-numeric characters)
+data['FuelConsumed'] = pd.to_numeric(data['FuelConsumed'].str.extract('(\d+)')[0])
+# Select relevant columns for the heatmaps
+heatmap_data = data[['Mine', 'WorkHours', 'FuelConsumed']]
+# Create a bar plot for WorkHours
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='WorkHours', data=heatmap_data)
+plt.title('Work Hours Distribution in Mine Zones')
+plt.ylabel('Work Hours')
+plt.show()
+# Create a bar plot for FuelConsumed
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='FuelConsumed', data=heatmap_data)
+plt.title('Fuel Consumption Distribution in Mine Zones')
+plt.ylabel('Fuel Consumed (gal)')
+plt.show()
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load your CSV data into a DataFrame
+data = pd.read_csv('M.csv')  # Replace 'your_data.csv' with your actual file name
+# Assuming you have a 'Mine' column indicating different mine zones
+# Adjust the column names as per your actual data
+mine_zones = data['Mine']
+# Convert 'WorkHours' to numeric (assuming it contains non-numeric characters)
+data['WorkHours'] = pd.to_numeric(data['WorkHours'].str.extract('(\d+)')[0])
+# Convert 'FuelConsumed' to numeric (assuming it contains non-numeric characters)
+data['FuelConsumed'] = pd.to_numeric(data['FuelConsumed'].str.extract('(\d+)')[0])
+# Select relevant columns for the heatmaps
+heatmap_data = data[['Mine', 'WorkHours', 'FuelConsumed']]
+# Create a bar plot for WorkHours
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='WorkHours', data=heatmap_data)
+plt.title('Work Hours Distribution in Mine Zones')
+plt.ylabel('Work Hours')
+plt.show()
+# Create a bar plot for FuelConsumed
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Mine', y='FuelConsumed', data=heatmap_data)
+plt.title('Fuel Consumption Distribution in Mine Zones')
+plt.ylabel('Fuel Consumed (gal)')
+plt.show()
+
+
+# In[2]:
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Step 1: Load CSV data
+data = pd.read_csv("all.csv")
+# Step 2: Data Exploration (if needed)
+# Step 3: Filter Data
+sensor_data = data[['Mine', 'Equipment', 'SensorColumn']]
+# Step 4: Group Data
+grouped_data = sensor_data.groupby(['Mine', 'Equipment']).mean()
+# Step 5: Create Heatmaps
+plt.figure(figsize=(12, 8))
+sns.heatmap(grouped_data.unstack(level='Equipment'), cmap='viridis', annot=True, fmt=".2f")
+plt.title('Sensor Distribution in Mine Zones')
+plt.xlabel('Equipment')
+plt.ylabel('Mine')
+plt.show()
+
+
+# In[ ]:
+
+
+
+
