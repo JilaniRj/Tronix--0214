@@ -1,0 +1,17 @@
+def calculate_carbon_footprint():
+    # Input values
+    electricity_consumption = float(input("Enter annual electricity consumption in kWh: "))
+    transportation_distance = float(input("Enter annual transportation distance in miles: "))
+    waste_generated = float(input("Enter annual waste generated in kg: "))
+    # Conversion factors
+    electricity_emission_factor = 0.4  # Example emission factor for electricity in kgCO2/kWh
+    transportation_emission_factor = 0.2  # Example emission factor for transportation in kgCO2/mile
+    waste_emission_factor = 0.1  # Example emission factor for waste in kgCO2/kg
+    # Calculate carbon footprint
+    electricity_emission = electricity_consumption * electricity_emission_factor
+    transportation_emission = transportation_distance * transportation_emission_factor
+    waste_emission = waste_generated * waste_emission_factor
+    total_emission = electricity_emission + transportation_emission + waste_emission
+    print(f"Your annual carbon footprint is {total_emission:.2f} kgCO2.")
+if __name__ == "__main__":
+    calculate_carbon_footprint()
