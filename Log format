@@ -1,0 +1,11 @@
+import logging
+# Configure the logging settings
+logging.basicConfig(
+    filename='example.log',  # Specify the log file
+    level=logging.INFO,       # Set the logging level (INFO, DEBUG, etc.)
+    format='%(asctime)s - %(levelname)s - %(message)s'  # Define the log format
+)
+# Example usage
+logging.info('This is an informational message')
+logging.warning('This is a warning message')
+logging.error('This is an error message')
