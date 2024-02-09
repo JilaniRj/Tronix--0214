@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[6]:
+
+
+from cryptography.fernet import Fernet #for symmetric key encryption algorithm
+key = Fernet.generate_key() #for encryption and decryption
+cipher_suite = Fernet(key) #fro encrypting and decrypting operations by generating fernet key
+# Encrypt a message here in inverted commas or the data I have to encrypt
+message = b"Hello, this is a secret message."
+cipher_text = cipher_suite.encrypt(message)
+print("Encrypted Message:", cipher_text)
+
+
+# In[5]:
+
+
+decrypted_text = cipher_suite.decrypt(cipher_text)
+print("Decrypted Message:", decrypted_text.decode())
+
+
+# In[7]:
+
+
+print("Original Message:", message)
+
+
+# In[8]:
+
+
+b'gAAAAABllVh7tuXVKGGEdrc7IL6FrfWjfeBHdP0kN099i4R9kYXgCMWw4gXUmR9HPnqZvNoPsFziUQXwV85YtOrF9xMg0d6aGVAU9pwt23Drb__T8PLsPDBtbGkT8eZYw8gsGv8PID7d'
+
+
+# In[ ]:
+
+
+
+
