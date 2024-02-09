@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[7]:
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+# Load CSV data
+df_equipment = pd.read_csv('alldata.csv')
+# Convert 'WorkHours' and 'FuelConsumed' columns to numeric
+try:
+    df_equipment['WorkHours'] = pd.to_numeric(df_equipment['WorkHours'], errors='coerce')
+    df_equipment['FuelConsumed'] = pd.to_numeric(df_equipment['FuelConsumed'], errors='coerce')
+except Exception as e:
+    print(f"Error during conversion: {e}")
+# Equipment Health Dashboard
+try:
+    fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(12, 8))
+    df_equipment.plot(kind='bar', x='Equipment', y='WorkHours', ax=axes[0, 0], title='Equipment Work Hours')
+    df_equipment.plot(kind='bar', x='Equipment', y='FuelConsumed', ax=axes[0, 1], title='Fuel Consumed')
+    df_equipment.plot(kind='bar', x='Equipment', y='Availability', ax=axes[1, 0], title='Availability')
+    # Extract additional data for Fuel Efficiency
+    df_fuel_efficiency = df_equipment[df_equipment['Fuel Efficiency'] == 'yellow']
+    df_fuel_efficiency.plot(kind='bar', x='Equipment', y='FuelConsumed', color='yellow', ax=axes[1, 1], title='Fuel Efficiency')
+    plt.tight_layout()
+    plt.show()
+except Exception as e:
+    print(f"Error during plotting: {e}")
+
+
+# In[ ]:
+
+
+
+
